@@ -3,11 +3,16 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import postRoutes from './routes/posts.js'
+
 import dotenv from 'dotenv'
 dotenv.config();
 
-console.log(process.env.DB_PASSWORD)
+
 const app = express();
+
+app.use('/posts', postRoutes);
+
 //const DB_PASSWORD = process.env.DB_PASSWORD
 app.use(bodyParser.json({limit:"30mb", extended: true}));//for large images
 app.use(bodyParser.urlencoded({limit:"30mb", extended: true}));//setting up body parser
