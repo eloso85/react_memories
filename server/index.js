@@ -11,14 +11,14 @@ dotenv.config();
 
 const app = express();
 
-app.use('/posts', postRoutes);
+
 
 //const DB_PASSWORD = process.env.DB_PASSWORD
 app.use(bodyParser.json({limit:"30mb", extended: true}));//for large images
 app.use(bodyParser.urlencoded({limit:"30mb", extended: true}));//setting up body parser
-
 app.use(cors());
 
+app.use('/posts', postRoutes);
 const CONNECTION_URL = `mongodb+srv://eloso85:${process.env.DB_PASSWORD}@cluster0.7ejd2.mongodb.net/<dbname>?retryWrites=true&w=majority`;
 
 const PORT = process.env.PORT || 5000;
